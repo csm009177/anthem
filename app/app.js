@@ -25,7 +25,7 @@ app.prepare().then(() => {
 
   // 회원가입 API 엔드포인트를 설정합니다.
   server.post("/signup", (req, res) => {
-    const { name, id, password } = req.body;
+    const { name, username, password } = req.body;
     // 회원가입 정보를 데이터베이스에 삽입하는 쿼리를 정의합니다.
     const query = "INSERT INTO users (name, username, password) VALUES (?, ?, ?)";
     // MySQL 데이터베이스에 쿼리를 실행하고 결과를 처리합니다.
