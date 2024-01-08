@@ -1,7 +1,7 @@
 // 필요한 모듈을 임포트합니다.
 const express = require("express");  // Express 웹 애플리케이션 프레임워크를 임포트합니다.
 const next = require('next');  // Next.js 애플리케이션 프레임워크를 임포트합니다.
-const mysql = require('mysql');  // MySQL 데이터베이스 연결을 위한 mysql2 라이브러리를 임포트합니다. (npm 패키지로 설치 필요)
+const mysql = require('mysql2');  // MySQL 데이터베이스 연결을 위한 mysql2 라이브러리를 임포트합니다. (npm 패키지로 설치 필요)
 const isDev = process.env.NODE_ENV !== 'development';  // 환경 변수를 확인하여 개발 모드인지 아닌지를 결정합니다. (production 또는 development)
 const app = next({ dev: isDev });  // Next.js 애플리케이션 인스턴스를 생성합니다. 개발 모드인지 아닌지에 따라 설정이 달라집니다.
 const handle = app.getRequestHandler();  // Next.js의 기본 요청 핸들러를 가져옵니다.
