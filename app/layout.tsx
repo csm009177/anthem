@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link"; // for pagination
+import styles from './ui/home.module.css'
+import HomeButton from './ui/homebutton';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Link href="/join">join</Link>
+        <div className={styles.headCont}>
+          {/* <Link href="/"><h1>home</h1></Link> */}
+          <HomeButton/>
+          <div>
+            <Link href="/join">join</Link>
+          </div>
+        </div>
         {children}
         </body>
     </html>

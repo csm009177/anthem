@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div>
-      home page
+    <div>      
+      <h1>home page</h1>
     </div>
   )
 }
