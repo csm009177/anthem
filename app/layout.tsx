@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link"; // for pagination
 import styles from './ui/home.module.css'
 import HomeButton from './ui/homebutton';
+import Joinbutton from './ui/joinbutton';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className={styles.headCont}>
-          {/* <Link href="/"><h1>home</h1></Link> */}
           <HomeButton/>
           <div>
-            <Link href="/join">join</Link>
+            <Joinbutton/>
           </div>
         </div>
         {children}
