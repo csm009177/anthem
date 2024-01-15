@@ -1,9 +1,11 @@
 "use client";
 import styles from './home.module.css'
+import { useRouter } from 'next/navigation';
 
 export default function Joinbutton() {
+  const router = useRouter()
   const handleClick = () => {
-    window.location.href = "/join";
+    router.push('/join')
   };
 
   return (
