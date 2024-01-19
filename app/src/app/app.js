@@ -42,7 +42,29 @@ app.prepare().then(() => {
     });
   });
 
+  server.post("/checkNationalAnthem", async (req, res) => {
+    try {
+      const { anthem } = req.body;
+      const connection = await mysql.createConnection(connectionConfig);
 
+      // 데이터베이스에서 애국가를 가져오는 쿼리를 실행합니다.
+      const [rows, fields] = await connection.query("SELECT lyrics FROM korean WHERE verse = 1");
+
+      // 데이터베이스에서 가져온 애국가와 입력된 애국가를 비교합니다.
+      if (rows.length > 0 && rows[0].lyrics === anthem) {
+        res.status(200).json({ message: "당신은 애국자입니다. 칭찬해드립니다!" });
+      } else {
+        res.status(400).json({ message: "애국가를 다시 확인해주세요." });
+      }
+
+      await connection.end(); // 연결 종료
+    } catch (err) {
+      console.error("Error checking national anthem:", err);
+      res.status(500).json({ message: "애국가 확인 중 오류가 발생했습니다." });
+    }
+  });
+
+  
 
   // Next.js 서버에 모든 요청을 위임하기 위한 핸들러를 설정합니다.
   server.all('*', (req, res) => {
