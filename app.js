@@ -2,6 +2,7 @@
 const express = require("express");  // Express 웹 애플리케이션 프레임워크를 임포트합니다.
 const next = require('next');  // Next.js 애플리케이션 프레임워크를 임포트합니다.
 const mysql = require('mysql2');  // MySQL 데이터베이스 연결을 위한 mysql2 라이브러리를 임포트합니다. (npm 패키지로 설치 필요)
+
 const isDev = process.env.NODE_ENV !== 'development';  // 환경 변수를 확인하여 개발 모드인지 아닌지를 결정합니다. (production 또는 development)
 const app = next({ dev: isDev });  // Next.js 애플리케이션 인스턴스를 생성합니다. 개발 모드인지 아닌지에 따라 설정이 달라집니다.
 const handle = app.getRequestHandler();  // Next.js의 기본 요청 핸들러를 가져옵니다.
@@ -11,8 +12,10 @@ const connection = mysql.createConnection({
   host: "localhost",  // 데이터베이스 서버의 호스트 이름입니다. (로컬에서 실행 중인 경우 localhost)
   user: "root",       // 데이터베이스에 접속할 사용자 이름입니다. (일반적으로 개발 환경에서는 root를 사용하지만, 실제 환경에서는 다르게 설정될 수 있습니다.)
   password: "0177",   // 사용자의 비밀번호입니다. (실제 환경에서는 보안을 위해 강력한 비밀번호를 사용해야 합니다.)
-  database: "shop",   // 연결할 데이터베이스의 이름입니다. 이 경우에는 "shop" 데이터베이스에 연결하려고 합니다.
+  database: "anthem",   // 연결할 데이터베이스의 이름입니다. 이 경우에는 "shop" 데이터베이스에 연결하려고 합니다.
+  port:3307,
 });
+
 
 // Next.js 애플리케이션 준비가 완료된 후에 실행될 코드를 정의합니다.
 app.prepare().then(() => {
