@@ -1,7 +1,15 @@
-import Image from "next/image";
+'use client'
+ 
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function ReloadButton() {
+  const router = useRouter();  
+  const handleClick = () =>{
+    router.push('/');
+  }
+
   return (
-   <div className="bottom-0">Home</div>
-  );
+    <button type="button" onClick={handleClick}>
+      HOME</button>
+  )
 }

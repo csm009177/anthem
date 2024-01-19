@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Home from './component/homeBnt';
-import Slide from './ui/silde';
+import Join from './(pages)/join/page';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='w-screen h-screen flex flex-col justify-between'>
+      <body className='flex flex-col justify-between w-screen h-1/5'>
+        <Home/>
         {children}
       </body>
     </html>
