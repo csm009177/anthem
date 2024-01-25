@@ -11,11 +11,8 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({ children }: ChildrenProps) {
   return (
-    <html lang='ko'>
-      <body className='flex flex-col justify-between h-screen w-screen overflow-hidden'>
-        
+      <div className='flex flex-col justify-between h-screen w-screen overflow-hidden'>
         {children}
-      </body>
-    </html>
+      </div>
   );
 }
