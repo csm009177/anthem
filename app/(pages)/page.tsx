@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [lyrics, setLyrics] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function Login() {
         body: JSON.stringify({ lyrics }),
       });
       if (response.ok) {
+        router.push("/korean");
         console.log(lyrics)
         setMessage("당신은 애국자입니다");
       } else {
