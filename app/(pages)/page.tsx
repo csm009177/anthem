@@ -50,25 +50,30 @@ export default function Login() {
 
   // 로그인 컴포넌트 JSX 반환
   return (
-    <div className="flex flex-col justify-center items-center h-lvh bg-green-900">
+    <div className="flex flex-col justify-center items-center h-lvh">
       <form
-        className="h-32 flex flex-row flex-wrap items-end justify-around p-40"
+        className="flex flex-row flex-wrap w-64 items-end justify-around"
         onSubmit={handleLogin}
       >
-        {/* 각 글자에 대한 입력 필드 생성 */}
+        {/* 각 글자에 대한 입력 필드 및 띄어쓰기에 대한 div 생성 */}
         {anthemText.split("").map((char, index) => (
-          <input
-            key={index}
-            className="w-fit border border-black"
-            type="text"
-            value={lyrics[index]}
-            placeholder={`_`}
-            onChange={(e) => {
-              const updatedLyrics = [...lyrics];
-              updatedLyrics[index] = e.target.value;
-              setLyrics(updatedLyrics);
-            }}
-          />
+          <React.Fragment key={index}>
+            {char !== " " ? (
+              <input
+                className="w-7 border border-black"
+                type="text"
+                value={lyrics[index]}
+                placeholder={`type '${char}'`}
+                onChange={(e) => {
+                  const updatedLyrics = [...lyrics];
+                  updatedLyrics[index] = e.target.value;
+                  setLyrics(updatedLyrics);
+                }}
+              />
+            ) : (
+              <div className="w-7" key={index}>&nbsp;</div>
+            )}
+          </React.Fragment>
         ))}
         {/* 로그인 버튼 */}
         <button className="border border-black" type="submit">
