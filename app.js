@@ -1,7 +1,7 @@
 const express = require("express");
 const next = require('next');
 const mysql = require('mysql2');
-
+const cors = require("cors"); // 추가
 const isDev = process.env.NODE_ENV !== 'development';
 const app = next({ dev: isDev });
 const handle = app.getRequestHandler()
@@ -18,6 +18,7 @@ const connection = mysql.createConnection({
 
 app.prepare().then(() => {
   const server = express();
+  server.use(cors()); // 추가
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
 
@@ -35,9 +36,9 @@ app.prepare().then(() => {
       }
       // 로그인 성공 여부 확인
       if (results.length > 0) {
-        res.status(200).json({ message: "로그인 성공" });
+        res.status(200).json({ message: "당신은 애국자입니다" });
       } else {
-        res.status(401).json({ message: "아이디 또는 비밀번호가 올바르지 않습니다." });
+        res.status(401).json({ message: "당신은 매국노입니다" });
       }
     });
   });
@@ -48,6 +49,7 @@ app.prepare().then(() => {
   });
 
   // 서버 시작
+  const port = 
   server.listen(3001, (err) => {
     if (err) throw err;
     console.log('> Ready on http://localhost:3001');

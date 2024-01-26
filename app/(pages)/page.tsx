@@ -18,13 +18,15 @@ export default function Login() {
         body: JSON.stringify({ lyrics }),
       });
       if (response.ok) {
+        console.log(lyrics)
         setMessage("당신은 애국자입니다");
       } else {
+        console.log(lyrics)
         setMessage("당신은 매국노입니다");
       }
     } catch (error) {
       console.error("Error:", error);
-      setMessage("애국가 제창중 오류가 발생");
+      setMessage("서버 오류");
     }
   };
 
