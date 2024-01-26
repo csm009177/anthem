@@ -1,10 +1,51 @@
-'use client'
+"use client";
 
+import React, { useState } from "react";
 
-export default function HomePage() {
+export default function Login() {
+  const [lyrics, setLyrics] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lyrics }),
+      });
+      if (response.ok) {
+        setMessage("당신은 애국자입니다");
+      } else {
+        setMessage("당신은 매국노입니다");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("애국가 제창중 오류가 발생");
+    }
+  };
+
   return (
-    <div className='flex justify-center items-center flex-col w-screen h-screen bg-green-900 text-white p-auto' >
-      contents
+    <div className="flex flex-col justify-center items-center h-lvh">
+      <form
+        className="h-32 flex flex-col items-end justify-around"
+        onSubmit={handleLogin}
+      >
+        <input
+          className="border border-black"
+          type="text"
+          value={lyrics}
+          placeholder="type first verse"
+          onChange={(e) => setLyrics(e.target.value)}
+        />
+        <button className="border border-black" type="submit">
+          검사
+        </button>
+      </form>
+      {message && <p>{message}</p>}
     </div>
   );
 }
