@@ -8,8 +8,8 @@ const handle = app.getRequestHandler();
 
 
 // 로그인 토큰 발행을 위한 import
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto'); // 보안 관련 작업을 수행하는 모듈
+const jwt = require('jsonwebtoken');  //
+const crypto = require('crypto');     // 보안 관련 작업을 수행하는 모듈
 const secretKey = crypto.randomBytes(32).toString('hex');
 
 // MariaDB 연결 설정
