@@ -13,10 +13,13 @@ export default function Korean() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-lvh  bg-green-900 text-white p-auto">
-      <div></div>
+    <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
+      <div>
       <Button url='info' title='Personnel Information'/>
-      
+      </div>
+      <div className='flex flex-col h-full justify-center items-center'>
+        test
+      </div>
     </div>
   );
 }

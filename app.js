@@ -11,14 +11,14 @@ const handle = app.getRequestHandler();
 const jwt = require('jsonwebtoken');  //
 const crypto = require('crypto');     // 보안 관련 작업을 수행하는 모듈
 const secretKey = crypto.randomBytes(32).toString('hex');
-
+ 
 // MariaDB 연결 설정
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "0177",
   database: "anthem",
-  port: 3307,
+  port: 3306,
 });
 
 app.prepare().then(() => {
