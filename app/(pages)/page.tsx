@@ -27,11 +27,11 @@ export default function Login() {
         // 토큰을 안전하게 저장
         localStorage.setItem("Token", token);
         router.push("/korean");
-        console.log(lyrics)
         setMessage("당신은 애국자입니다");
+        console.log(`input lyrics : ${lyrics}` )
       } else {
-        console.log(lyrics)
         setMessage("당신은 매국노입니다");
+        console.log(`input lyrics : ${lyrics}` )
       }
     } catch (error) {
       console.error("Error:", error);
