@@ -32,7 +32,7 @@ export default function Korean() {
   
         // 토큰을 안전하게 저장
         localStorage.setItem("infoToken", infoToken);
-        router.push("/info");
+        router.push("/inner");
         setMessage("정답입니다");
         console.log(`input answer : ${answer}` )
       } else {
@@ -48,7 +48,7 @@ export default function Korean() {
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
-        <Button url='info' title='Personnel Information'/>
+        <Button url='html' title='Html Useage'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
