@@ -8,6 +8,7 @@ export default function Button({ url, title }: { url: string; title: string }) {
   const useCustomButton = () => {
     // 클릭 시 해당 URL로 페이지 이동
     router.push(`/${url}`);
+    console.log(url)
   };
   return (
     <button onClick={useCustomButton}>{title}</button>
