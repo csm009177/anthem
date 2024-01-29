@@ -5,6 +5,8 @@ import Button from '../../ui/button/button';
 
 export default function Korean() {
   const Token = localStorage.getItem("Token");
+  const [lyrics, setLyrics] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
   
   if (!Token) {
@@ -12,13 +14,58 @@ export default function Korean() {
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }
 
+  const handlePass = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lyrics }),
+      });
+      if (response.ok) {
+        // 토큰 발행을 위한 서버 응답 기다리기
+        const data = await response.json();
+        const token = data.token;
+  
+        // 토큰을 안전하게 저장
+        localStorage.setItem("Token", token);
+        router.push("/info");
+        setMessage("정답입니다");
+        console.log(`input lyrics : ${lyrics}` )
+      } else {
+        setMessage("당신은 매국노입니다");
+        console.log(`input lyrics : ${lyrics}` )
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("서버 오류");
+    }
+  };
+
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
         <Button url='info' title='Personnel Information'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
-        test
+      <form
+        className="h-32 flex flex-col items-end justify-around"
+        onSubmit={handlePass}
+      >
+        <input
+          className="border border-black text-black"
+          type="text"
+          value={lyrics}
+          placeholder="type first verse"
+          onChange={(e) => setLyrics(e.target.value)}
+        />
+        <button className="border border-black" type="submit">
+          검사
+        </button>
+      </form>
       </div>
     </div>
   );

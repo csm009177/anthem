@@ -53,6 +53,33 @@ app.prepare().then(() => {
     });
   });
 
+  // answer
+  server.post("/passOne", (req, res) => {
+    const { answer } = req.body;
+
+    // 해당 사용자가 존재하는지 확인하는 쿼리
+    const query = "SELECT * FROM korean WHERE answer = ?";
+    connection.query(query, [answer], (err, results, fields) => {
+      if (err) {
+        console.error("Error logging in:", err);
+        res.status(500).json({ message: "로그인에 실패했습니다." });
+        return;
+      }
+
+      // 로그인 성공 여부 확인
+      if (results.length > 0) {
+        const user = results[0];
+        const tokenPayload = {
+          answer: user.answer,
+        };
+        const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 애국자입니다", token });
+      } else {
+        res.status(401).json({ message: "당신은 매국노입니다" });
+      }
+    });
+  });
+
   // Next.js 서버에 라우팅 위임
   server.all('*', (req, res) => {
     return handle(req, res);
