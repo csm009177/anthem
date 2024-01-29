@@ -5,7 +5,7 @@ import Button from '../../ui/button/button';
 
 export default function Korean() {
   const Token = localStorage.getItem("Token");
-  const [lyrics, setLyrics] = useState("");
+  const [answer, setLyrics] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
   
@@ -18,12 +18,12 @@ export default function Korean() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/login", {
+      const response = await fetch("/passOne", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ lyrics }),
+        body: JSON.stringify({ answer }),
       });
       if (response.ok) {
         // 토큰 발행을 위한 서버 응답 기다리기
@@ -34,10 +34,10 @@ export default function Korean() {
         localStorage.setItem("Token", token);
         router.push("/info");
         setMessage("정답입니다");
-        console.log(`input lyrics : ${lyrics}` )
+        console.log(`input answer : ${answer}` )
       } else {
-        setMessage("당신은 매국노입니다");
-        console.log(`input lyrics : ${lyrics}` )
+        setMessage("틀렸습니다");
+        console.log(`input answer : ${answer}` )
       }
     } catch (error) {
       console.error("Error:", error);
@@ -52,13 +52,13 @@ export default function Korean() {
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
-        className="h-32 flex flex-col items-end justify-around"
+        className="h-32 flex items-end justify-around"
         onSubmit={handlePass}
       >
         <input
           className="border border-black text-black"
           type="text"
-          value={lyrics}
+          value={answer}
           placeholder="type first verse"
           onChange={(e) => setLyrics(e.target.value)}
         />
@@ -66,6 +66,7 @@ export default function Korean() {
           검사
         </button>
       </form>
+      {message && <p>{message}</p>}
       </div>
     </div>
   );

@@ -72,10 +72,10 @@ app.prepare().then(() => {
         const tokenPayload = {
           answer: user.answer,
         };
-        const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 애국자입니다", token });
+        const infoToken = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 html을 잘 압니다", infoToken });
       } else {
-        res.status(401).json({ message: "당신은 매국노입니다" });
+        res.status(401).json({ message: "당신은 html을 모릅니다" });
       }
     });
   });
