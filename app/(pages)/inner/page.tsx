@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Button from '../../ui/button/button';
 
-export default function Korean() {
+export default function Inner() {
   const Token = localStorage.getItem("Token");
   const [answer, setLyrics] = useState("");
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ export default function Korean() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/passOne", {
+      const response = await fetch("/passTwo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function Korean() {
   
         // 토큰을 안전하게 저장
         localStorage.setItem("infoToken", infoToken);
-        router.push("/info");
+        router.push("/inner");
         setMessage("정답입니다");
         console.log(`input answer : ${answer}` )
       } else {

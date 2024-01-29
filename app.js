@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   user: "root",
   password: "0177",
   database: "anthem",
-  port: 3306,
+  port: 3307,
 });
 
 app.prepare().then(() => {
@@ -58,7 +58,7 @@ app.prepare().then(() => {
     const { answer } = req.body;
 
     // 해당 사용자가 존재하는지 확인하는 쿼리
-    const query = "SELECT * FROM korean WHERE answer = ?";
+    const query = "SELECT * FROM pass WHERE answer= ? AND num = 1";
     connection.query(query, [answer], (err, results, fields) => {
       if (err) {
         console.error("Error logging in:", err);
