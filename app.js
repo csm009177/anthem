@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   user: "root",
   password: "0177",
   database: "anthem",
-  port: 3307,
+  port: 3306,
 });
 
 app.prepare().then(() => {
@@ -72,8 +72,8 @@ app.prepare().then(() => {
         const tokenPayload = {
           answer: user.answer,
         };
-        const infoToken = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", infoToken });
+        const tokenOne = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenOne });
       } else {
         res.status(401).json({ message: "당신은 html을 모릅니다" });
       }
@@ -99,8 +99,8 @@ app.prepare().then(() => {
         const tokenPayload = {
           answer: user.answer,
         };
-        const infoToken = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", infoToken });
+        const tokenTwo = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenTwo });
       } else {
         res.status(401).json({ message: "당신은 html을 모릅니다" });
       }

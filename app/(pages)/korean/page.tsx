@@ -28,10 +28,10 @@ export default function Korean() {
       if (response.ok) {
         // 토큰 발행을 위한 서버 응답 기다리기
         const data = await response.json();
-        const infoToken = data.token;
+        const tokenOne = data.token;
   
         // 토큰을 안전하게 저장
-        localStorage.setItem("infoToken", infoToken);
+        localStorage.setItem("tokenOne", tokenOne);
         router.push("/inner");
         setMessage("정답입니다");
         console.log(`input answer : ${answer}` )
@@ -48,13 +48,13 @@ export default function Korean() {
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
-        <Button url='html' title='Html Useage'/>
+        <Button url='info' title='Personnel Information'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
-        className="h-32 flex items-end justify-around"
+        className=" flex justify-around"
         onSubmit={handlePass}
-      >
+      >{`<Script>`}
         <input
           className="border border-black text-black"
           type="text"
@@ -62,6 +62,7 @@ export default function Korean() {
           placeholder="type first verse"
           onChange={(e) => setLyrics(e.target.value)}
         />
+        {`<Script/>`}
         <button className="border border-black" type="submit">
           검사
         </button>
