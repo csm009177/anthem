@@ -4,14 +4,19 @@ import { useRouter } from "next/navigation";
 import Button from '../../ui/button/button';
 
 export default function Inner() {
-  const Token = localStorage.getItem("Token");
+  const token = localStorage.getItem("token");
+  const tokenOne = localStorage.getItem("tokenOne");
   const [answer, setLyrics] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
   
-  if (!Token) {
+  if (!token) {
     router.push("/");
     alert("꼼수 부리지 마라. 더러운 매국노야");
+  }
+  if (!tokenOne) {
+    router.push("/");
+    alert("꼼수 부리지 마라. 더러운 얌생이야");
   }
 
   const handlePass = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,10 +33,10 @@ export default function Inner() {
       if (response.ok) {
         // 토큰 발행을 위한 서버 응답 기다리기
         const data = await response.json();
-        const infoToken = data.token;
+        const tokenTwo = data.tokenTwo;
   
         // 토큰을 안전하게 저장
-        localStorage.setItem("infoToken", infoToken);
+        localStorage.setItem("tokenTwo", tokenTwo);
         router.push("/stack");
         setMessage("정답입니다");
         console.log(`input answer : ${answer}` )

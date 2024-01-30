@@ -28,7 +28,7 @@ export default function Korean() {
       if (response.ok) {
         // 토큰 발행을 위한 서버 응답 기다리기
         const data = await response.json();
-        const tokenOne = data.token;
+        const tokenOne = data.tokenOne;
   
         // 토큰을 안전하게 저장
         localStorage.setItem("tokenOne", tokenOne);
