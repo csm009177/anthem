@@ -9,6 +9,7 @@ export default function Korean() {
   const [message, setMessage] = useState("");
   const router = useRouter();
   
+  // token 있는지 검사하기
   if (!token) {
     router.back();
     alert("꼼수 부리지 마라. 더러운 매국노야");
