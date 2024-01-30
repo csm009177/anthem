@@ -73,9 +73,9 @@ app.prepare().then(() => {
           answer: user.answer,
         };
         const tokenOne = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenOne });
+        res.status(200).json({ message: "당신은 Html을 잘 압니다", tokenOne });
       } else {
-        res.status(401).json({ message: "당신은 html을 모릅니다" });
+        res.status(401).json({ message: "당신은 Html을 모릅니다" });
       }
     });
   });
@@ -100,9 +100,9 @@ app.prepare().then(() => {
           answer: user.answer,
         };
         const tokenTwo = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenTwo });
+        res.status(200).json({ message: "당신은 Javascript을 잘 압니다", tokenTwo });
       } else {
-        res.status(401).json({ message: "당신은 html을 모릅니다" });
+        res.status(401).json({ message: "당신은 Javascript을 모릅니다" });
       }
     });
   });
@@ -127,9 +127,9 @@ app.prepare().then(() => {
           answer: user.answer,
         };
         const tokenThree = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenThree });
+        res.status(200).json({ message: "당신은 React을 잘 압니다", tokenThree });
       } else {
-        res.status(401).json({ message: "당신은 html을 모릅니다" });
+        res.status(401).json({ message: "당신은 React을 모릅니다" });
       }
     });
   });
@@ -153,9 +153,36 @@ app.prepare().then(() => {
           answer: user.answer,
         };
         const tokenFour = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenFour });
+        res.status(200).json({ message: "당신은 Next을 잘 압니다", tokenFour });
       } else {
-        res.status(401).json({ message: "당신은 html을 모릅니다" });
+        res.status(401).json({ message: "당신은 Next을 모릅니다" });
+      }
+    });
+  });
+
+  // passFive
+  server.post("/passFive", (req, res) => {
+    const { answer } = req.body;
+
+    // 해당 사용자가 존재하는지 확인하는 쿼리
+    const query = "SELECT * FROM pass WHERE answer= ? AND num = 5";
+    connection.query(query, [answer], (err, results, fields) => {
+      if (err) {
+        console.error("Error logging in:", err);
+        res.status(500).json({ message: "로그인에 실패했습니다." });
+        return;
+      }
+
+      // 로그인 성공 여부 확인
+      if (results.length > 0) {
+        const user = results[0];
+        const tokenPayload = {
+          answer: user.answer,
+        };
+        const tokenFive = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 Next을 잘 압니다", tokenFive });
+      } else {
+        res.status(401).json({ message: "당신은 Next을 모릅니다" });
       }
     });
   });

@@ -9,6 +9,7 @@ export default function JavaScript() {
   const tokenOne    = localStorage.getItem("tokenOne");
   const tokenTwo    = localStorage.getItem("tokenTwo");
   const tokenThree  = localStorage.getItem("tokenThree");
+  const tokenFour  = localStorage.getItem("tokenFour");
 
   if (!token) {
     router.back();
@@ -24,12 +25,16 @@ export default function JavaScript() {
   }
   if (!tokenThree) {
     router.back();
-    alert("꼼수 부리지 마라. 더러운 얌생2야");
+    alert("꼼수 부리지 마라. 더러운 얌생3야");
+  }
+  if (!tokenFour) {
+    router.back();
+    alert("꼼수 부리지 마라. 더러운 얌생4야");
   }
 
   return (
     <div className="flex flex-col justify-center items-center h-lvh  bg-green-900 text-white p-auto">
-      <div>SHOWING REACT USAGE</div>
+      <div>SHOWING NEXT USAGE</div>
       <br />
       <BackButton />
     </div>
