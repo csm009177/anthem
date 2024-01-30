@@ -5,16 +5,16 @@ import Button from "../../ui/button/button";
 import BackButton from "@/app/ui/button/backButton";
 
 export default function Info() {
-  const Token = localStorage.getItem("Token");
-  const infoToken = localStorage.getItem("infoToken");
+  const token = localStorage.getItem("token");
+  const tokenOne = localStorage.getItem("tokenOne");
   const router = useRouter();
 
-  if (!Token) {
+  if (!token) {
     router.push("/");
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }
 
-  if(!infoToken) {
+  if(!tokenOne) {
     router.push("/");
     alert("꼼수 부리지 마라. 더러운 얌생이야");
   }
