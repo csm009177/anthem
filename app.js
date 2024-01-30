@@ -31,7 +31,7 @@ app.prepare().then(() => {
     const { lyrics } = req.body;
 
     // 해당 사용자가 존재하는지 확인하는 쿼리
-    const query = "SELECT * FROM korean WHERE lyrics = ? AND verse = 1 ";
+    const query = "SELECT * FROM korean WHERE lyrics = ? AND verse = 0 ";
     connection.query(query, [lyrics], (err, results, fields) => {
       if (err) {
         console.error("Error logging in:", err);
