@@ -133,6 +133,32 @@ app.prepare().then(() => {
       }
     });
   });
+  // passFour
+  server.post("/passFour", (req, res) => {
+    const { answer } = req.body;
+
+    // 해당 사용자가 존재하는지 확인하는 쿼리
+    const query = "SELECT * FROM pass WHERE answer= ? AND num = 4";
+    connection.query(query, [answer], (err, results, fields) => {
+      if (err) {
+        console.error("Error logging in:", err);
+        res.status(500).json({ message: "로그인에 실패했습니다." });
+        return;
+      }
+
+      // 로그인 성공 여부 확인
+      if (results.length > 0) {
+        const user = results[0];
+        const tokenPayload = {
+          answer: user.answer,
+        };
+        const tokenFour = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+        res.status(200).json({ message: "당신은 html을 잘 압니다", tokenFour });
+      } else {
+        res.status(401).json({ message: "당신은 html을 모릅니다" });
+      }
+    });
+  });
 
   // Next.js 서버에 라우팅 위임
   server.all('*', (req, res) => {

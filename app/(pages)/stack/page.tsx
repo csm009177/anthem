@@ -42,7 +42,7 @@ export default function Stack() {
   
         // 토큰을 안전하게 저장
         localStorage.setItem("tokenThree", tokenThree);
-        router.push("/other");
+        router.push("/stackOne");
         setMessage("정답입니다");
         console.log(`input answer : ${answer}` )
       } else {
