@@ -9,7 +9,7 @@ export default function JavaScript() {
   const tokenOne    = localStorage.getItem("tokenOne");
   const tokenTwo    = localStorage.getItem("tokenTwo");
   const tokenThree  = localStorage.getItem("tokenThree");
-  const tokenFour  = localStorage.getItem("tokenFour");
+  const tokenFour   = localStorage.getItem("tokenFour");
 
   if (!token) {
     router.back();
@@ -31,6 +31,7 @@ export default function JavaScript() {
     router.back();
     alert("꼼수 부리지 마라. 더러운 얌생4야");
   }
+
 
   return (
     <div className="flex flex-col justify-center items-center h-lvh  bg-green-900 text-white p-auto">

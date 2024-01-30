@@ -68,7 +68,7 @@ export default function StackTwo() {
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
-        <Button url='react' title='React Useage'/>
+        <Button url='next' title='Next Useage'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
