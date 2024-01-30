@@ -58,7 +58,7 @@ export default function Stack() {
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
-        <Button url='Javascript' title='Javascript Useage'/>
+        <Button url='javascript' title='Javascript Useage'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
