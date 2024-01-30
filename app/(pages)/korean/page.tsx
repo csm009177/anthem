@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import Button from '../../ui/button/button';
 
 export default function Korean() {
-  const Token = localStorage.getItem("Token");
+  const token = localStorage.getItem("token");
   const [answer, setLyrics] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
   
-  if (!Token) {
+  if (!token) {
     router.push("/");
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }

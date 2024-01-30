@@ -25,7 +25,7 @@ export default function Login() {
         const token = data.token;
   
         // 토큰을 안전하게 저장
-        localStorage.setItem("Token", token);
+        localStorage.setItem("token", token);
         router.push("/korean");
         setMessage("당신은 애국자입니다");
         console.log(`input lyrics : ${lyrics}` )
