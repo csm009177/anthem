@@ -11,11 +11,11 @@ export default function Inner() {
   const router = useRouter();
   
   if (!token) {
-    router.push("/");
+    router.back();
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }
   if (!tokenOne) {
-    router.push("/");
+    router.back();
     alert("꼼수 부리지 마라. 더러운 얌생이야");
   }
 
@@ -53,7 +53,7 @@ export default function Inner() {
   return (
     <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
       <div>
-        <Button url='info' title='Personnel Information'/>
+        <Button url='html' title='Html Useage'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form

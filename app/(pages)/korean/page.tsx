@@ -10,7 +10,7 @@ export default function Korean() {
   const router = useRouter();
   
   if (!token) {
-    router.push("/");
+    router.back();
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }
 

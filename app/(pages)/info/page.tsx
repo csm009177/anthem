@@ -1,12 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Button from "../../ui/button/button";
 import BackButton from "@/app/ui/button/backButton";
 
 export default function Info() {
   const token = localStorage.getItem("token");
-  const tokenOne = localStorage.getItem("tokenOne");
   const router = useRouter();
 
   if (!token) {
@@ -14,10 +12,6 @@ export default function Info() {
     alert("꼼수 부리지 마라. 더러운 매국노야");
   }
 
-  if(!tokenOne) {
-    router.push("/");
-    alert("꼼수 부리지 마라. 더러운 얌생이야");
-  }
 
 
   return (
