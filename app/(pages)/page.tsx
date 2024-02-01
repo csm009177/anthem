@@ -46,7 +46,6 @@ export default function Login() {
       <Header/>
       <div className="flex flex-col h-full justify-center items-center">
       <form
-        className="h-32 flex flex-row items-end justify-around"
         onSubmit={handleLogin}
       >
         <input

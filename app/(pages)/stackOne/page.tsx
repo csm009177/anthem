@@ -66,7 +66,7 @@ export default function StackOne() {
     <div className="flex flex-col h-screen w-screen bg-green-900 text-white p-auto">
       <Header/>
       <div>
-        <Button url='info' title='Personnel Information'/>
+        <Button url='react' title='React Useage'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
