@@ -2,12 +2,9 @@
 
 import Button from './button/button';
 import React, { useState, useEffect } from 'react';
-import { useRouter } from "next/navigation";
 
 
 export default function Header() {
-  const router = useRouter();
-  const [input, setInput] = useState("");
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -22,6 +19,24 @@ export default function Header() {
       }
       if (currentUrl === "http://localhost:3000/info") {
         setTitle("Personnel Information");
+      }
+      if (currentUrl === "http://localhost:3000/inner") {
+        setTitle("Complete the components for the next page");
+      }
+      if (currentUrl === "http://localhost:3000/html") {
+        setTitle("Html Useage");
+      }
+      if (currentUrl === "http://localhost:3000/stack") {
+        setTitle("stack");
+      }
+      if (currentUrl === "http://localhost:3000/javascript") {
+        setTitle("Javascript Useage");
+      }
+      if (currentUrl === "http://localhost:3000/stackOne") {
+        setTitle("stackOne");
+      }
+      if (currentUrl === "http://localhost:3000/html") {
+        setTitle("Html Useage");
       }
         
     };
