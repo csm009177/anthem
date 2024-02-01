@@ -20,6 +20,7 @@ export default function Header() {
         "/react": "React Useage",
         "/stackTwo": "stackTwo",
         "/next": "Next Useage",
+        "/final": "You are my Master",
       };
       const currentUrl = window.location.pathname;
       setTitle(routes[currentUrl] || "");
