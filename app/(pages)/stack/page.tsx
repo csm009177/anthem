@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Button from '../../ui/button/button';
+import Foot from '../../ui/footer';
+import Header from '../../ui/header';
 
 export default function Stack() {
   const token = localStorage.getItem("token");
@@ -56,15 +58,16 @@ export default function Stack() {
   };
 
   return (
-    <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
+    <div className="flex flex-col h-screen w-screen bg-green-900 text-white p-auto">
+      <Header/>
       <div>
-        <Button url='javascript' title='Javascript Useage'/>
+        <Button url='info' title='Personnel Information'/>
       </div>
       <div className='flex flex-col h-full justify-center items-center'>
       <form
-        className="h-32 flex items-end justify-around"
+        className=" flex justify-around"
         onSubmit={handlePass}
-      >
+      >{`<Script>`}
         <input
           className="border border-black text-black"
           type="text"
@@ -72,12 +75,14 @@ export default function Stack() {
           placeholder="type first verse"
           onChange={(e) => setLyrics(e.target.value)}
         />
+        {`<Script/>`}
         <button className="border border-black" type="submit">
           검사
         </button>
       </form>
       {message && <p>{message}</p>}
       </div>
+      <Foot/>
     </div>
   );
 }
