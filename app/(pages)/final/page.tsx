@@ -1,20 +1,20 @@
-'use client'
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Button from '../../ui/button/button';
-import Header from '../../ui/header';
-import Foot from '../../ui/footer';
+import Button from "../../ui/button/button";
+import Header from "../../ui/header";
+import Foot from "../../ui/footer";
 
-export default function StackTwo() {
+export default function Final() {
   const router = useRouter();
   const [answer, setLyrics] = useState("");
   const [message, setMessage] = useState("");
-  const token      = localStorage.getItem("token");
-  const tokenOne   = localStorage.getItem("tokenOne");
-  const tokenTwo   = localStorage.getItem("tokenTwo");
+  const token = localStorage.getItem("token");
+  const tokenOne = localStorage.getItem("tokenOne");
+  const tokenTwo = localStorage.getItem("tokenTwo");
   const tokenThree = localStorage.getItem("tokenThree");
-  const tokenFour  = localStorage.getItem("tokenFour");
-  
+  const tokenFour = localStorage.getItem("tokenFour");
+
   if (!token) {
     router.back();
     alert("꼼수 부리지 마라. 더러운 매국노야");
@@ -51,15 +51,15 @@ export default function StackTwo() {
         // 토큰 발행을 위한 서버 응답 기다리기
         const data = await response.json();
         const tokenFive = data.tokenFive;
-  
+
         // 토큰을 안전하게 저장
         localStorage.setItem("tokenFive", tokenFive);
-        router.push("/final");
+        router.push("/stackTwo");
         setMessage("정답입니다");
-        console.log(`input answer : ${answer}` )
+        console.log(`input answer : ${answer}`);
       } else {
         setMessage("틀렸습니다");
-        console.log(`input answer : ${answer}` )
+        console.log(`input answer : ${answer}`);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -69,30 +69,21 @@ export default function StackTwo() {
 
   return (
     <div className="flex flex-col h-screen w-screen bg-green-900 text-white p-auto">
-      <Header/>
-      <div>
+      <Header />
+      <div className="flex flex-col h-full justify-center items-center">
+        <Button url="info" title="Personnel Information" />
+        <br/>
+        <Button url="html" title="Html Useage" />
+        <br/>
+        <Button url='javascript' title='Javascript Useage'/>
+        <br/>
+        <Button url='react' title='React Useage'/>
+        <br/>
         <Button url='next' title='Next Useage'/>
+      
+        {message && <p>{message}</p>}
       </div>
-      <div className='flex flex-col h-full justify-center items-center'>
-      <form
-        className=" flex justify-around"
-        onSubmit={handlePass}
-      >{`<Script>`}
-        <input
-          className="border border-black text-black"
-          type="text"
-          value={answer}
-          placeholder="type first verse"
-          onChange={(e) => setLyrics(e.target.value)}
-        />
-        {`<Script/>`}
-        <button className="border border-black" type="submit">
-          검사
-        </button>
-      </form>
-      {message && <p>{message}</p>}
-      </div>
-      <Foot/>
+      <Foot />
     </div>
   );
 }
