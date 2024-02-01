@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Header from '../ui/header';
+import Foot from '../ui/footer';
 
 export default function Login() {
   const [lyrics, setLyrics] = useState("");
@@ -40,9 +42,11 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-lvh  bg-green-900 text-white p-auto">
+    <div className="flex flex-col h-screen w-screen bg-green-900 text-white p-auto">
+      <Header/>
+      <div className="flex flex-col h-full justify-center items-center">
       <form
-        className="h-32 flex flex-col items-end justify-around"
+        className="h-32 flex flex-row items-end justify-around"
         onSubmit={handleLogin}
       >
         <input
@@ -57,6 +61,8 @@ export default function Login() {
         </button>
       </form>
       {message && <p>{message}</p>}
+      </div>
+      <Foot/>
     </div>
   );
 }
