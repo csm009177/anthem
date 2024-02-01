@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import BackButton from "@/app/ui/button/backButton";
+import Header from "../../ui/header";
+import Foot from "../../ui/footer";
 
 export default function Info() {
   const token = localStorage.getItem("token");
@@ -13,15 +15,17 @@ export default function Info() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-lvh  bg-green-900 text-white p-auto">
-      <div>
+    <div className="flex flex-col h-screen w-screen justify-center items-center  bg-green-900 text-white p-auto">
+      <Header />
+      <div className="flex flex-col h-lvh justify-center items-center">
         Personnel information
         <div>CHOI SUNGMIN</div>
         <div> 82+010-9558-1007</div>
         <div>csm009177@gamil.com</div>
+        <br />
+        <BackButton />
       </div>
-      <br/>
-      <BackButton/>
+      <Foot />
     </div>
   );
 }

@@ -20,6 +20,9 @@ export default function Header() {
       if (currentUrl === "http://localhost:3000/korean") {
         setTitle("There is bodyStateData and script");
       }
+      if (currentUrl === "http://localhost:3000/info") {
+        setTitle("Personnel Information");
+      }
         
     };
 

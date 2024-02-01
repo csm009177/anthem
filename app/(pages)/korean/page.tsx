@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Button from '../../ui/button/button';
+import Header from '../../ui/header';
+import Foot from '../../ui/footer';
 
 export default function Korean() {
   const token = localStorage.getItem("token");
@@ -47,7 +49,8 @@ export default function Korean() {
   };
 
   return (
-    <div className="flex flex-col h-lvh  bg-green-900 text-white p-auto">
+    <div className="flex flex-col h-screen w-screen bg-green-900 text-white p-auto">
+      <Header/>
       <div>
         <Button url='info' title='Personnel Information'/>
       </div>
@@ -70,6 +73,7 @@ export default function Korean() {
       </form>
       {message && <p>{message}</p>}
       </div>
+      <Foot/>
     </div>
   );
 }
